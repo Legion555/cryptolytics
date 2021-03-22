@@ -10,8 +10,6 @@ import {MdEqualizer} from 'react-icons/md'
 
 
 export default function Home() {
-  const [viewIntro, setViewIntro] = useState<boolean >(true)
-  const [viewCrypto, setViewCrypto] = useState<boolean >(false)
   
   return (
     <div className="w-full h-screen relative bg-gray-800">

@@ -30,6 +30,7 @@ const Index = () => {
   }, [isPlaying])
 
   const toCryptos = () => {
+    audio.pause()
     setLeave(true)
     setTimeout(() => {
       router.push('/cryptos')

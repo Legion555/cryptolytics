@@ -3,6 +3,7 @@ import axios from 'axios';
 //components
 import Search from '../components/Cryptos/Search'
 import Top from '../components/Cryptos/Top'
+import Market from '../components/Cryptos/Market'
 //spring
 import {useSpring, animated} from 'react-spring'
 
@@ -21,10 +22,11 @@ const Index = () => {
     }, [])
 
     return (
-        <animated.div style={fadeIn} className="w-full h-screen flex justify-center pt-32 text-gray-200 bg-gray-800">
-            <div className="w-6/12">
+        <animated.div style={fadeIn} className="w-full h-screen flex justify-center pt-16 text-gray-200 bg-gray-800">
+            <div className="w-6/12 flex flex-col gap-10">
+                <Market />
                 <Search coinList={coinList} />
-                <Top coinList={coinList} />                
+                <Top coinList={coinList} />
             </div>
         </animated.div>
     )

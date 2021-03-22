@@ -31,7 +31,7 @@ const Search = ({coinList}) => {
     return (
         <div>
             {/* <h1 className="mb-4 text-4xl">Search a cryptocurrency:</h1> */}
-            <animated.div className="mb-8 relative z-40" ref={inputBox}
+            <animated.div className="relative z-40" ref={inputBox}
                 onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
                 onMouseLeave={() => set({ xys: [0, 0, 1] })}
                 style={{ transform: props.xys.interpolate(trans) }}>
