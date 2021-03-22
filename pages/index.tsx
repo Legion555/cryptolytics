@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Router from 'next/router'
 //components
 import Intro from '../components/Intro'
-import Cryptos from '../components/Cryptos'
 //icons
 import {MdEqualizer} from 'react-icons/md'
 
