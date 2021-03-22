@@ -30,7 +30,7 @@ const Search = () => {
     }
 
     return (
-        <div className="flex justify-evenly gap-10">
+        <div className="flex flex-col md:flex-row justify-evenly gap-5 md:gap-10">
             <div className="w-full h-full flex flex-col justify-center items-center gap-2 py-2 rounded-xl shadow bg-gray-900">
                 <div>
                     <h1>Total Market Cap</h1>

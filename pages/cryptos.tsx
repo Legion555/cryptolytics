@@ -22,8 +22,8 @@ const Index = () => {
     }, [])
 
     return (
-        <animated.div style={fadeIn} className="w-full h-screen flex justify-center pt-16 text-gray-200 bg-gray-800">
-            <div className="w-6/12 flex flex-col gap-10">
+        <animated.div style={fadeIn} className="w-full min-h-screen flex justify-center pb-8 md:pb-2 pt-16 text-gray-200 bg-gray-800">
+            <div className="w-full md:w-9/12 lg:w-6/12 px-2 flex flex-col gap-5 md:gap-10">
                 <Market />
                 <Search coinList={coinList} />
                 <Top coinList={coinList} />

@@ -31,14 +31,14 @@ const Search = ({coinList}) => {
     return (
         <div>
             {/* <h1 className="mb-4 text-4xl">Search a cryptocurrency:</h1> */}
-            <animated.div className="relative z-40" ref={inputBox}
+            <animated.div className="w-11/12 mx-auto px-4 relative z-40" ref={inputBox}
                 onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
                 onMouseLeave={() => set({ xys: [0, 0, 1] })}
                 style={{ transform: props.xys.interpolate(trans) }}>
-                <input className="w-full p-8 text-gray-800 text-center text-4xl rounded-xl shadow focus:outline-none"
+                <input className="w-full p-4 md:p-8 text-gray-800 text-center text-xl md:text-3xl rounded-xl shadow focus:outline-none"
                     type="text" placeholder="Search a cryptocurrency..."
                     value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
-                <div className="w-full max-h-80 absolute mt-4 overflow-y-auto rounded-xl shadow bg-gray-600
+                <div className="w-11/12 max-h-80 absolute mt-4 overflow-y-auto rounded-xl shadow bg-gray-600
                     scrollbar-thin scrollbar-thumb-yellow-600 scrollbar-track-gray-400">
                     {filterCoinList && filterInput !== '' && filterCoinList.map(coin => 
                         <p key={coin.id} className="block p-2 cursor-pointer hover:text-gray-800 hover:bg-gray-400">{coin.name}</p>
