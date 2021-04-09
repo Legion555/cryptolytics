@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto&display=swap');
 
-h1, button, a {
+h1, h2, h3, button, a {
     font-family: 'Comfortaa', cursive;
 }
 p, input {

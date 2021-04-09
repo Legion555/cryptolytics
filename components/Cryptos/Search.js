@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from 'react'
+import Link from 'next/link'
 //spring
 import {useSpring, animated} from 'react-spring'
 
@@ -9,6 +10,7 @@ const Search = ({coinList}) => {
     const [filterInput, setFilterInput] = useState('')
 
     //anims
+    const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 3, tension: 400, friction: 40 } }))
     const inputBox = useRef(null);
 
@@ -29,7 +31,7 @@ const Search = ({coinList}) => {
     trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
     return (
-        <div>
+        <animated.div style={fadeIn}>
             {/* <h1 className="mb-4 text-4xl">Search a cryptocurrency:</h1> */}
             <animated.div className="w-11/12 mx-auto px-4 relative z-40" ref={inputBox}
                 onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
@@ -41,11 +43,13 @@ const Search = ({coinList}) => {
                 <div className="w-11/12 max-h-80 absolute mt-4 overflow-y-auto rounded-xl shadow bg-gray-600
                     scrollbar-thin scrollbar-thumb-yellow-600 scrollbar-track-gray-400">
                     {filterCoinList && filterInput !== '' && filterCoinList.map(coin => 
+                        <Link href="/crypto/[id]" as={`/crypto/${coin.id}`}>
                         <p key={coin.id} className="block p-2 cursor-pointer hover:text-gray-800 hover:bg-gray-400">{coin.name}</p>
+                        </Link>
                     )}
                 </div>
             </animated.div>
-        </div>
+        </animated.div>
     )
 }
 

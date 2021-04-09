@@ -5,13 +5,7 @@ import {useSpring, animated} from 'react-spring'
 
 
 
-interface Props {
-    name: string;
-    imageUrl: string;
-    cta: () => void;
-}
-
-const Card =({name, imageUrl, cta}: Props) => {
+const Card =({name, imageUrl, cta}) => {
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 3, tension: 400, friction: 40 } }))
     const cardElem = useRef(null);
     const [audio] = useState(typeof Audio !== "undefined" && new Audio('/assets/audio-hover.wav'));

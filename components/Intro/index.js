@@ -20,21 +20,21 @@ const Index = () => {
   const lineExtend = useSpring({width: '100%', from: {width: '0%'}, config: { duration: 1500 }});
   const [leave, setLeave] = useState(false)
   
-  useEffect(() => {
-    if(isPlaying) {
-      audio.play();
-    } else {
-      audio.pause()
-    }
-    audio.volume = 0.1;
-  }, [isPlaying])
+  // useEffect(() => {
+  //   if(isPlaying) {
+  //     audio.play();
+  //   } else {
+  //     audio.pause()
+  //   }
+  //   audio.volume = 0.1;
+  // }, [isPlaying])
 
   const toCryptos = () => {
-    audio.pause()
-    setLeave(true)
-    setTimeout(() => {
-      router.push('/cryptos')
-    }, 1e3)
+    router.push('/cryptos')
+    // audio.pause()
+    // setLeave(true)
+    // setTimeout(() => {
+    // }, 1e3)
   }
   
   return (
