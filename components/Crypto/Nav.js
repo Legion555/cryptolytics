@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 //redux
 import {useSelector} from 'react-redux'
 
@@ -43,14 +43,15 @@ const CoinLinks = ({coinList}) => {
 }
 
 const CoinLink = ({coinData}) => {
+    const router = useRouter();
+
     return (
-        <Link href="/crypto/[id]" as={`/crypto/${coinData.id}`} >
-        <div className="flex items-center gap-2 p-2 rounded-xl bg-gray-900">
+        <div className="flex items-center gap-2 p-2 rounded-xl bg-gray-900"
+            onClick={() => router.push(`/crypto/${coinData.id}`)}>
             <div className="w-8 h-8 relative">
                 <Image className="object-cover" src={coinData.image} layout="fill" />
             </div>
             <h1>{coinData.symbol}</h1>
         </div>
-        </Link>
     )
 }

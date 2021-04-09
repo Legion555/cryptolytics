@@ -12,7 +12,7 @@ import {useSpring, animated} from 'react-spring'
 const Index = () => {
   const router = useRouter()
   //audio
-  const [isPlaying, setIsPlaying] = useState<boolean >(true);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [audio] = useState(typeof Audio !== "undefined" && new Audio('/assets/audio-background.mp3'));
   //anims
   const fadeIn = useSpring({opacity: 1, from: {opacity: 0}, config: { duration: 1000 }});
