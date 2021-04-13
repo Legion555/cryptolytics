@@ -36,16 +36,16 @@ export default function PriceChart() {
         }
     }
 
-    const buttonStyle = `p-2 text-center text-xl text-gray-100 bg-gray-900 rounded-xl hover:bg-yellow-600 focus:outline-none`
+    const buttonStyle = `p-2 text-center md:text-xl text-gray-100 bg-gray-900 rounded-xl hover:bg-yellow-600 focus:outline-none`
 
     return (
-        <div className="w-full p-4 bg-gray-800" style={{height: '400px'}}>
+        <div className="w-full p-2 md:p-4 bg-gray-800" style={{height: '400px'}}>
             <div className="w-full mb-2 flex items-center">
                 <div className="w-full h-1 bg-yellow-600" />
                 <h1 className="whitespace-nowrap mx-2 text-center text-2xl text-gray-100">Price History</h1>
                 <div className="w-full h-1 bg-yellow-600" />
             </div>
-            <div className="mb-2 flex justify-center gap-8">
+            <div className="mb-2 flex justify-center gap-4 md:gap-8">
                 <button className={`${buttonStyle} ${view === 'twentyfour' && 'bg-yellow-600'}`}
                     onClick={() => {
                     setView('twentyfour');
@@ -61,15 +61,7 @@ export default function PriceChart() {
             </div>
             {ninetyDayPrice !== [] ?
             <ResponsiveContainer width="100%" height="80%">
-                <LineChart
-                data={parseData()}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-                >
+                <LineChart data={parseData()} >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" tickFormatter={(time) => parseDate(time)} minTickGap={15} />
                 <YAxis dataKey="price" type="number" domain={[dataMin => (dataMin * 0.99), dataMax => (dataMax * 1.01)]}

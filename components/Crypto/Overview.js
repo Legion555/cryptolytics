@@ -37,7 +37,7 @@ export default function Overview() {
 
     return (
         <div className="p-4 flex flex-col justify-between gap-4">
-            <div className="flex justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-4">
                 {/* Key data */}
                 <div className={`w-full h-64 text-gray-200 bg-gray-800 overflow-hidden`} >
                     <div className="w-full h-full p-4 flex flex-col">
@@ -50,7 +50,7 @@ export default function Overview() {
                         <div className="py-4 flex gap-4 border-b-2 border-blue-400">
                             <div className="w-full">
                                 <h1 className="xl:mb-2 text-sm xl:text-base text-gray-300">Price</h1>
-                                <p className="text-xl xl:text-2xl">${coinData.market_data.current_price.usd < 0 ? coinData.market_data.current_price.usd : numberWithCommas(coinData.market_data.current_price.usd)}</p>
+                                <p className="text-xl xl:text-2xl">${coinData.market_data.current_price.usd < 1 ? coinData.market_data.current_price.usd : numberWithCommas(coinData.market_data.current_price.usd)}</p>
                             </div>
                             <div className="w-full">
                                 <h1 className="xl:mb-2 text-sm xl:text-base text-gray-300">24h Change</h1>
@@ -91,7 +91,7 @@ export default function Overview() {
                     </div>
                 </div>
                 {/* About */}
-                <div className={`w-9/12 h-64 p-4 text-justify text-gray-300 bg-gray-800 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800`}  >
+                <div className={`w-full md:w-9/12 h-64 p-4 text-justify text-gray-300 bg-gray-800 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800`}  >
                     <div>
                         <div className="w-full flex items-center">
                             <h1 className="text-2xl mr-2 text-gray-200">About</h1>

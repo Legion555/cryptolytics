@@ -18,7 +18,7 @@ export default function Nav() {
     return (
         <div className="w-full h-16 px-4 py-2 flex justify-between items-center text-gray-200 bg-gray-800">
             <div className="flex gap-8">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 md:gap-4">
                     {coinData ?
                         <div className="w-8 h-8 relative">
                             <Image className="object-contain" src={coinData.image.large} layout="fill" />
@@ -28,12 +28,12 @@ export default function Nav() {
                             <BiLoader className="animate-spin-slow duration-1000 text-4xl" />
                         </div>
                     }
-                    <h1 className="text-xl font-bold">{coinData && coinData.name}</h1>
+                    <h1 className="md:text-xl font-bold">{coinData && coinData.name}</h1>
                     <p className="text-xl text-gray-500">{coinData && coinData.symbol}</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="hidden lg:flex gap-2">
                     {relatedCoins && coinData &&
-                        <CoinLinks coinList={relatedCoins.slice(0,5).filter(coin => coin.id !== coinData.id)} />
+                        <CoinLinks coinList={relatedCoins.slice(0,6).filter(coin => coin.id !== coinData.id)} />
                     }
                 </div>
             </div>

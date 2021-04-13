@@ -46,7 +46,7 @@ export default function Search() {
 
     return (
         <div className="relative">
-            <input className="p-2 text-gray-800 rounded-xl focus:outline-none" type="text" placeholder="search..."
+            <input className="p-2 w-32 lg:w-48 text-gray-800 rounded-xl focus:outline-none" type="text" placeholder="search..."
                 value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
             {/* <input className="w-full p-4 md:p-8 text-gray-800 text-center text-xl md:text-3xl rounded-xl shadow focus:outline-none"
                     type="text" placeholder="Search a cryptocurrency..."
