@@ -6,10 +6,14 @@ import Intro from '../components/Intro'
 //icons
 import {MdEqualizer} from 'react-icons/md'
 
+import {useSelector} from 'react-redux'
+
 
 
 
 export default function Home() {
+  const coinData = useSelector(state => state.coinData.value)
+  console.log(coinData)
   
   return (
     <div className="w-full h-screen relative bg-gray-800">
