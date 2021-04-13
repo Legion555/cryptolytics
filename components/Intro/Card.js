@@ -32,7 +32,7 @@ const Card =({name, imageUrl, cta}) => {
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         style={{ transform: props.xys.interpolate(trans) }}
       >
-        <Image className="object-fit" src={imageUrl} layout="fill" />
+        <Image className="object-cover" src={imageUrl} layout="fill" />
         <div className="w-full h-full absolute flex justify-center items-center
           text-gray-200 bg-gray-900 bg-opacity-50 hover:text-yellow-400 hover:bg-opacity-0 transition ease-in duration-300">
           <h1 className="text-6xl select-none">{name}</h1>

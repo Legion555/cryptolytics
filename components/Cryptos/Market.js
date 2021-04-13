@@ -10,7 +10,7 @@ import {BiLoader} from 'react-icons/bi'
 
 
 const Search = () => {
-    const [marketData, setMarketData] = useState(null)
+    const [marketData, setMarketData] = useState(null);
 
     //anims
     const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});

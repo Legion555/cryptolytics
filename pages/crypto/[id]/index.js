@@ -5,10 +5,9 @@ import Head from 'next/head';
 //components
 import Nav from '../../../components/Crypto/Nav'
 import Overview from '../../../components/Crypto/Overview'
-var coinData = require('../../../sampleData.json');
 //redux
 import {useSelector, useDispatch} from 'react-redux'
-import {updateCoinData, resetCoinData} from '../../../slices/coinDataSlice' 
+import {updateOverview, updatePriceHistory, updateRelated, resetCoinData} from '../../../slices/coinDataSlice' 
 
 
 
@@ -22,18 +21,29 @@ export function getServerSideProps(context) {
 export default function Index({params}) {
     const dispatch = useDispatch();
     const coinData = useSelector(state => state.coinData.value);
-    const [coinList, setCoinList] = useState(null);
+    console.log(coinData)
 
     useEffect(() => {
         dispatch(resetCoinData());
         const {id} = params;
+        //get general data
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}`)
         .then(result => {
-            dispatch(updateCoinData(result.data))
+            dispatch(updateOverview(result.data))
         }).catch(err => console.log(err))
-        axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+        //get 90day price data
+        axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=90`)
         .then(result => {
-            setCoinList(result.data)
+            let priceArray = [];
+            result.data.prices.forEach(price =>
+                    priceArray.push({time: price[0], price: price[1]})
+            )
+            dispatch(updatePriceHistory(priceArray));
+        }).catch(err => console.log(err))
+        //get related coins
+        axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=false')
+        .then(result => {
+            dispatch(updateRelated(result.data))
         }).catch(err => console.log(err))
     }, [])
 
@@ -42,8 +52,8 @@ export default function Index({params}) {
             <Head>
                 <title>{coinData && coinData.name}</title>
             </Head>
-            <div className="h-screen flex flex-col">
-                <Nav coinList={coinList} />
+            <div className="min-h-screen flex flex-col">
+                <Nav />
                 <div className="w-full">
                     <Overview coinId={params.id} />
                 </div>
