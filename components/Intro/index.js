@@ -52,8 +52,8 @@ const Index = () => {
             <animated.h1 style={fadeIn} className="p-4 text-gray-200 text-2xl md:text-4 lg:text-6xl text-center">Welcome to the future</animated.h1>
           </div>
           <div className="mt-8 flex flex-col md:flex-row justify-center gap-5 md:gap-20">
-            <Card name={'Learn'} imageUrl={'/assets/intro_1.jpg'} cta={toCryptos}  />
-            <Card name={'Cryptos'} imageUrl={'/assets/intro_2.jpg'} cta={toCryptos} />
+            <Card name={'Learn'} imageUrl={'/assets/intro_1.jpg'} url={'https://www.edx.org/learn/cryptocurrency'}  />
+            <Card name={'Cryptos'} imageUrl={'/assets/intro_2.jpg'} url={'/cryptos'} />
           </div>
         </div>
         

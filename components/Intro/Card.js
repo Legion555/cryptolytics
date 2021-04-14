@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 //spring
 import {useSpring, animated} from 'react-spring'
 
 
 
-const Card =({name, imageUrl, cta}) => {
+const Card =({name, imageUrl, url}) => {
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 3, tension: 400, friction: 40 } }))
     const cardElem = useRef(null);
     const [audio] = useState(typeof Audio !== "undefined" && new Audio('/assets/audio-hover.wav'));
@@ -25,8 +26,8 @@ const Card =({name, imageUrl, cta}) => {
     }
     
     return (
+      <Link href={url} >
       <animated.div className={`w-full h-64 lg:h-80 relative shadow`} ref={cardElem}
-        onClick={cta}
         onMouseEnter={playSound}
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
@@ -38,6 +39,7 @@ const Card =({name, imageUrl, cta}) => {
           <h1 className="text-6xl select-none">{name}</h1>
         </div>
       </animated.div>
+      </Link>
     )
 }
 
